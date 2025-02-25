@@ -4,93 +4,356 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
+    <script type="text/javascript" src="./js/tabSwitcher.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Accessible Components</title>
     <meta
       name="description"
       content="High-performance HTML based website template."
     />
   </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
+  <body style="margin: 0; background-color: #f2eac3">
+    <!-- start with a nav bar -->
+    <div class="nav">
+      <div class="title">CS1300</div>
+    </div>
+
+    <div class="assignment-body">
+      <div class="title" style="margin: auto">
+        Accessible Design: Checkboxes/Radio Buttons
+      </div>
+      <div class="subtitle">by Juan Garcia | 2/24/2025</div>
+      <hr />
+      <div style="height: 12px"></div>
+      <div class="par-holder">
+        <p class="body-par">
+          This website displays a case study into the use of checkboxes and
+          radio buttons across three different websites, focusing on the state
+          models for each one. State models help us organize transitions across
+          different user actions (i.e., when a user hovers over an element, how
+          does its state change?). The case study will present state models and
+          provide recommendations for a new state model for one of the websites
+          with learnability and accessibility in mind. Use the tabs below to
+          explore the different sections of this study.
+        </p>
+      </div>
+      <!-- to create tabs, I will be following 
+       the guide found here: https://www.w3schools.com/howto/howto_js_tabs.asp -->
+
+      <div class="section-title">Inputs and Outputs</div>
+      <div class="par-holder" style="background-color: #ffc723">
+        <p class="body-par" style="color: black">
+          This section explores the use of the Radio Buttons or Checkboxes
+          across Amazon, Courses@Brown, and Google Flights. Click through the
+          tabs below to read about their inputs and outputs across the state
+          model.
+        </p>
+      </div>
+      <div class="tab-holder">
+        <button class="tabs active" onclick="switchTab(event, 'Amazon')">
+          Amazon
+        </button>
+        <button class="tabs" onclick="switchTab(event, 'CAB')">C@B</button>
+        <button class="tabs" onclick="switchTab(event, 'Google')">
+          Flights
+        </button>
+      </div>
+      <!-- tab 1 -->
+      <div class="tab-body" style="display: flex" id="Amazon">
+        <!-- This is the content for amazon -->
+        <table class="my-table">
+          <tr>
+            <th></th>
+            <th>Input</th>
+            <th>Output</th>
+          </tr>
+          <tr>
+            <td>Keyboard</td>
+            <td>
+              <ul>
+                <li>Tab to enter the selected radio button</li>
+                <li>Up and Down arrows to move between buttons</li>
+              </ul>
+            </td>
+            <td>
+              <!-- This is the response for describing the output using the keyboard -->
+              <ul>
+                <li>
+                  Up and Down arrows change the selection and toggle radio
+                  buttons between unselected and selected
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>Mouse</td>
+            <td>
+              <ul>
+                <li>Radio Buttons can be hovered over</li>
+                <li>Radio Buttons can be pressed, clicked, and released</li>
+              </ul>
+            </td>
+            <td>
+              <!-- This is the response for describing the output using the mouse. -->
+              <ul>
+                <li>
+                  Hovering the mouse activates the hover state for the button,
+                  darkening the outline
+                </li>
+                <li>
+                  Clicking the radio lightens the outline to indicate pressed
+                </li>
+                <li>
+                  Releasing a click on the radio button selects the button,
+                  setting its fill
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+        <img
+          src="./data/amazon_default_selected_hovered.png"
+          width="500px"
+          style="border: black 2px solid; margin: auto"
+        />
+        <p class="image-caption">
+          Image 3. The Default, Selected, and Hovered states (top to bottom) can
+          be observed in this image.
+        </p>
+        <img
+          src="./data/amazon_tabbed.png"
+          width="500px"
+          style="border: black 2px solid; margin: auto"
+        />
+        <p class="image-caption">
+          Image 4. A button that has been tabbed into focus.
+        </p>
+      </div>
+      <div class="tab-body" id="Google">
+        <table class="my-table">
+          <tr>
+            <th></th>
+            <th>Input</th>
+            <th>Output</th>
+          </tr>
+          <tr>
+            <td>Keyboard</td>
+            <td>
+              <ul>
+                <li>Tab to enter the selected radio button</li>
+                <li>Up/Down/Left/Right arrows to move between buttons</li>
+              </ul>
+            </td>
+            <td>
+              <!-- This is the response for describing the output using the keyboard -->
+              <ul>
+                <li>
+                  Up/Down/Right/Left arrows change the selection and toggle
+                  radio buttons between unselected and selected
+                </li>
+                <li>
+                  Tabbing into a radio button gives it an outline and darkens
+                  the fill to indicate focus.
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>Mouse</td>
+            <td>
+              <ul>
+                <li>Radio Buttons can be hovered over</li>
+                <li>Radio Buttons can be pressed, clicked, and released</li>
+              </ul>
+            </td>
+            <td>
+              <!-- This is the response for describing the output using the mouse. -->
+              <ul>
+                <li>
+                  Hovering the mouse activates the hover state for the button,
+                  giving the button a light shadow around its radius
+                </li>
+                <li>
+                  Pressing the button darks outline, releasing sets fill to blue
+                </li>
+                <li>
+                  Pressing down and moving the mouse out of the circle removes
+                  the shadow.
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+        <img
+          src="./data/google_hovered.png"
+          style="border: black 2px solid; margin: auto"
+          width="500px"
+        />
+        <p class="image-caption">
+          Image 6. Hovering over a radio button in Flights created a light
+          shadow. The selected state can also be observed in this photo.
+        </p>
+        <img
+          src="./data/google pressed.png"
+          width="500px"
+          style="border: black 2px solid; margin: auto"
+        />
+        <p class="image-caption">
+          Image 7. Pressing a radio button darkens the shadow.
+        </p>
+        <img
+          src="./data/google_tabbed.png"
+          width="500px"
+          style="border: black 2px solid; margin: auto"
+        />
+        <p class="image-caption">
+          Image 8. Tabbing into a selected button darkens the fill and outline
+          to indicate focus.
+        </p>
+      </div>
+      <div class="tab-body" id="CAB">
+        <table class="my-table">
+          <tr>
+            <th></th>
+            <th>Input</th>
+            <th>Output</th>
+          </tr>
+          <tr>
+            <td>Keyboard</td>
+            <td>
+              <ul>
+                <li>Tab to toggle between buttons</li>
+                <li>Space to toggle between states</li>
+              </ul>
+            </td>
+            <td>
+              <!-- This is the response for describing the output using the keyboard -->
+              <ul>
+                <li>Tab changes focus between checkboxes.</li>
+                <li>
+                  Spacebar on a selected checkbox unselects is, and vice versa
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>Mouse</td>
+            <td>
+              <ul>
+                <li>Check Boxes can be hovered over</li>
+                <li>Check can be pressed, clicked, and released</li>
+              </ul>
+            </td>
+            <td>
+              <!-- This is the response for describing the output using the mouse. -->
+              <ul>
+                <li>
+                  Hovering activates the hover state for the box, darkening the
+                  outline if unselected or darkening the fill if selected.
+                </li>
+                <li>
+                  Clicking the radio lightens the outline/fill to indicate
+                  pressed for unselected/selected boxes
+                </li>
+                <li>
+                  Releasing a click on the box selects/unselects the checkbox,
+                  setting/removing its fill
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+        <img src="./data/cab_hovered.png" style="border: black 2px solid" />
+        <p class="image-caption">
+          Image 3. Hovering over a checkbox in C@B slightly darkens the outline.
+        </p>
+        <img
+          src="./data/cab_hovered_selected.png"
+          style="border: black 2px solid"
+        />
+        <p class="image-caption">
+          Image 4. Hovering over a selected checkbox darkens the fill.
+        </p>
+        <img src="./data/cab_tab_focused.png" style="border: black 2px solid" />
+        <p class="image-caption">
+          Image 5. Tabbing into a checkbox creates a dark square outline.
+        </p>
+      </div>
+
+      <!-- now this is the section forpart 3, with the state models -->
+      <div
+        class="section-title"
+        style="
+          height: 86px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
       >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
+        State Diagrams
+      </div>
+      <div class="par-holder" style="margin-top: 24px; margin-bottom: 24px">
+        <p class="body-par">
+          The states described in the table above are visualized in the state
+          diagrams below. The State models for the Amazon design are provided as
+          the focus of this case study, given that we will be offering a
+          recommendation for it's current state model.
+        </p>
+      </div>
+      <div class="like-tab-body">
+        <img src="./data/state-diagram1.png" style="border: black 2px solid" />
+        <p class="image-caption">Image 1. State diagram for Mouse users</p>
+        <img src="./data/state-diagram2.png" style="border: black 2px solid" />
+        <p class="image-caption">Image 2. State diagram for Keyboard users</p>
+      </div>
+      <div class="par-holder" style="background-color: #ffc723">
+        <p class="body-par" style="color: black">
+          To improve the current model, I will focus on the Mouse User's model,
+          given that there is no distinction between the Default (unselected) or
+          Active (pressed down). Taking inspiration from Google's model, I
+          recommend the following model for Amazon.
+        </p>
+      </div>
+      <div class="like-tab-body" style="margin-top: 32px">
+        <img src="./data/state-diagram3.png" style="border: black 2px solid" />
+        <p class="image-caption">Image 2. New State Diagram for Users</p>
+      </div>
+      <div class="par-holder">
+        <p class="body-par">
+          The adjustments to the diagram are bolded. The primary change was the
+          separation of the Active and Default state for mouse users in an
+          attempt to improve learnability and accessibility. The following
+          details outline the changes made and why.
+        </p>
+        <p class="body-par" style="text-align: left">
+          <!-- idea to disguise span as list item from: https://stackoverflow.com/questions/7168723/cannot-include-a-list-inside-a-paragraph-element  -->
+          <span style="display: list-item; margin-left: 2em">
+            Adding a light blue fill creates more contrast between hover and
+            default, improving accessibility and learnability by indicating
+            'soft selection'.
+          </span>
+          <span style="display: list-item; margin-left: 2em">
+            Adding a distinctive Active State wanrs the use of an action they
+            are about to perform, improving acessibility and learnability.
+          </span>
+          <span style="display: list-item; margin-left: 2em">
+            Transitioning from Active to Hover when the user drags while pressed
+            improves learnability for this "hack".
+          </span>
+        </p>
+
+        <p class="body-par">A Mockup for this state can be seen below:</p>
+      </div>
+      <div class="like-tab-body">
+        <img src="./data/amazon_mock_up.png" style="border: black 2px solid" />
+        <p class="image-caption">Image 8. Mock Up for new Amazon state</p>
+      </div>
+      <div class="par-holder" style="margin-top: 24px; margin-bottom: 24px">
+        <p class="body-par">
+          Figma Link Here:
+          https://www.figma.com/design/GlQihZFWHj6cnx4u2D8tZt/Accessible-Design-Redesign?node-id=1-2&t=QGP3ZmB7aRAIq1cS-1
+        </p>
+      </div>
+    </div>
   </body>
 </html>
